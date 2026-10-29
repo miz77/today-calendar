@@ -1,0 +1,26 @@
+{
+  "name": "today-calendar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Cloudflare Worker that serves today's date as a Japanese desk-calendar SVG for Scrapbox.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src",
+    "lint:fix": "oxlint --fix src",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "check": "npm run typecheck && npm run lint && npm run format:check",
+    "fix": "npm run lint:fix && npm run format"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.4",
+    "@cloudflare/workers-types": "^5.20261029.1",
+    "oxlint": "^1.90.0",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.155.0"
+  }
+}

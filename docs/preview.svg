@@ -1,0 +1,16 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'>
+  <style>
+    rect { fill: #ffffff; stroke: #cccccc; }
+    text { fill: #212121; }
+    .holiday { fill: #e53935; }
+    .saturday { fill: #1565c0; }
+    @media (prefers-color-scheme: dark) {
+      rect { fill: #252a30; stroke: #404551; }
+      text { fill: #f2f2f2; }
+      .saturday { fill: #64b5f6; }
+    }
+  </style>
+  <rect x='10' y='10' width='380' height='280' stroke-width='2' />
+  <text x='200' y='160' text-anchor='middle' font-size='160' font-weight='600' font-family="Verdana, 'Helvetica Neue', Helvetica, Arial, sans-serif">1</text>
+  <text class='holiday' x='200' y='260' text-anchor='middle' font-size='80' font-weight='600' font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans CJK JP', Verdana, sans-serif">日</text>
+</svg>
