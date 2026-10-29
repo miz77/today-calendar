@@ -9,8 +9,8 @@
 Scrapbox のページに、次のどちらかを貼ります。
 
 ```text
-[https://<公開URL>/today/jp.svg]
-[https://<公開URL>/today/en.svg]
+[https://today-calendar.pages.dev/today/jp.svg]
+[https://today-calendar.pages.dev/today/en.svg]
 ```
 
 - `jp.svg` は「日 月 火 水 木 金 土」、`en.svg` は「Sun Mon Tue Wed Thu Fri Sat」で曜日を表示します。
