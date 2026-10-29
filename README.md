@@ -26,6 +26,7 @@ Scrapbox のページに、次のどちらかを貼ります。
 - 祝日は現行の祝日法のルール（固定日・ハッピーマンデー・春分／秋分・振替休日・国民の休日）で計算します。祝日法が変わったときはコードの更新が必要です。
 - 400×300 の SVG を、枠の `rect` と日にち・曜日の 2 つの `text` で組み立てます。
 - `Cache-Control: no-store` で返します。Scrapbox の ServiceWorker は画像をネットワーク優先で取得するため、固定 URL でもページを開き直せば更新されます。
+- `npm run build` で `src/index.ts` を `dist/_worker.js` に変換します。Cloudflare Pages は出力ディレクトリの `_worker.js` を Worker として実行します。
 
 ## 自分で動かす
 
@@ -33,17 +34,22 @@ Node.js（バージョンは [`.nvmrc`](.nvmrc)）、npm、Cloudflare アカウ�
 
 ```bash
 npm ci
-npm run dev    # http://localhost:8787/today/jp.svg で確認
+npm run dev    # http://localhost:8788/today/jp.svg で確認
 ```
 
-Cloudflare Workers へのデプロイ:
+### Cloudflare Pages へのデプロイ
 
-```bash
-npx wrangler login
-npm run deploy
-```
+このリポジトリを自分の GitHub に置き、Cloudflare のダッシュボードから連携します。設定は次のとおりです。
 
-Worker の名前は [`wrangler.jsonc`](wrangler.jsonc) の `name` で変えられます。デプロイ後に表示される URL を、「使い方」と同じ形で Scrapbox に貼ります。
+| 項目 | 値 |
+| --- | --- |
+| フレームワーク プリセット | なし |
+| ビルドコマンド | `npm run build` |
+| ビルド出力ディレクトリ | `dist` |
+
+以降は `main` に push するたびにデプロイされ、`https://<プロジェクト名>.pages.dev` で公開されます。[`wrangler.jsonc`](wrangler.jsonc) の `name` はプロジェクト名に合わせてください。
+
+GitHub と連携せず手元からデプロイする場合は、`npx wrangler login` のあと `npm run deploy` を実行します。
 
 ## 開発
 
