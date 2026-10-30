@@ -2,8 +2,9 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const WEEKDAYS_JP = ['日', '月', '火', '水', '木', '金', '土'];
 const WEEKDAYS_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const NUMBER_FONT = "Verdana, 'Helvetica Neue', Helvetica, Arial, sans-serif";
-const JP_FONT =
-  "'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans CJK JP', Verdana, sans-serif";
+// 英字は Verdana、Verdana にない漢字は後ろの日本語フォントで表示される。
+const WEEKDAY_FONT =
+  "Verdana, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif";
 
 // 現行の「国民の祝日」。振替休日・国民の休日はここには含めない。
 function isPublicHoliday(date: Date): boolean {
@@ -87,7 +88,7 @@ export default {
     // 枠・日にち・曜日。色はCSSだけで指定し、ダーク時に上書きする。
     const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'>
   <style>
-    rect { fill: #ffffff; stroke: #cccccc; }
+    rect { fill: none; stroke: #cccccc; }
     text { fill: #212121; }
     .holiday { fill: #e53935; }
     .saturday { fill: #1565c0; }
@@ -99,7 +100,7 @@ export default {
   </style>
   <rect x='10' y='10' width='380' height='280' stroke-width='2' />
   <text x='200' y='160' text-anchor='middle' font-size='160' font-weight='600' font-family="${NUMBER_FONT}">${day}</text>
-  <text class='${weekdayClass}' x='200' y='260' text-anchor='middle' font-size='80' font-weight='600' font-family="${JP_FONT}">${labels[weekday]}</text>
+  <text class='${weekdayClass}' x='200' y='260' text-anchor='middle' font-size='80' font-weight='600' font-family="${WEEKDAY_FONT}">${labels[weekday]}</text>
 </svg>
 `;
 
